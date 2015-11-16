@@ -9,9 +9,7 @@ Speed = "0.1" --The best ones are 0.1 - 0.5
 Banned = "angelofdarkness7877"
 Chat = true
 ----------------------------------------------------------------------------------------------
-  print[[-----------//bOrb\\-----------
-------Made by Basictality-----
-------------\\End//------------']]
+ print[[version 51.6]]
  meplyr = adminwew
  ----------Message-----------
  function OnChatted(msg)
@@ -19,11 +17,12 @@ Chat = true
 		for i,v in pairs(game.Players:children()) do
 mesgui=Instance.new('ScreenGui',v.PlayerGui)
 mesframe=Instance.new('Frame',mesgui)
-mesframe.Size = UDim2.new(0,1400,0,700)
+mesframe.Size = UDim2.new(0,1,0,1)
 mesframe.BackgroundTransparency=0.6
 mesframe.Position = UDim2.new(0,-2000,0,0)
 mesframe.BackgroundColor3 = Color3.new(0,0,0)
 mesframe:TweenPosition(UDim2.new(0, 0, 0, 0), "Out", 1.2)
+mesframe:TweenSize(UDim2.new(0, 1400, 0, 700), "Out", 1.2)
 
 mestl=Instance.new('TextLabel',mesframe)
 mestl.TextScaled = true
@@ -39,8 +38,7 @@ mestl1.Position = UDim2.new(0,0,0,300)
 mestl1.BackgroundTransparency = 1
 mestl1.TextColor3 = Color3.new(255,255,255)
 mestl1.Size = UDim2.new(0,1350,0,50)
-wait(3)
-mesframe:TweenPosition(UDim2.new(0, 2000, 0, 0), "Out", 1.2)
+game.Debris:AddItem(mesframe,3)
 		end
 		end
 	end
