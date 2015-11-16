@@ -13,6 +13,39 @@ Chat = true
 ------Made by Basictality-----
 ------------\\End//------------']]
  meplyr = adminwew
+ ----------Message-----------
+ function OnChatted(msg)
+	    if msg:lower():sub(1,2) == "m " then
+		for i,v in pairs(game.Players:children()) do
+mesgui=Instance.new('ScreenGui',v.PlayerGui)
+mesframe=Instance.new('Frame',mesgui)
+mesframe.Size = UDim2.new(0,1400,0,700)
+mesframe.BackgroundTransparency=0.6
+mesframe.Position = UDim2.new(0,-2000,0,0)
+mesframe.BackgroundColor3 = Color3.new(0,0,0)
+mesframe:TweenPosition(UDim2.new(0, 0, 0, 0), "Out", 1.2)
+
+mestl=Instance.new('TextLabel',mesframe)
+mestl.TextScaled = true
+mestl.Text = 'Message from '..adminwew.Name..':'
+mestl.BackgroundTransparency = 1
+mestl.TextColor3 = Color3.new(255,255,255)
+mestl.Size = UDim2.new(0,1350,0,50)
+
+mestl1=Instance.new('TextLabel',mesframe)
+mestl1.TextScaled = true
+mestl1.Text = msg:sub(2,#msg)
+mestl1.Position = UDim2.new(0,0,0,300)
+mestl1.BackgroundTransparency = 1
+mestl1.TextColor3 = Color3.new(255,255,255)
+mestl1.Size = UDim2.new(0,1350,0,50)
+wait(3)
+mesframe:TweenPosition(UDim2.new(0, 2000, 0, 0), "Out", 1.2)
+		end
+		end
+	end
+
+adminwew.Chatted:connect(OnChatted)
 ------------Pitch------------
 function OnChatted(msg)
 	    if msg:lower():sub(1,6) == "pitch " then
