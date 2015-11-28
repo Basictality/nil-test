@@ -656,7 +656,7 @@ if Chat == true then
    end);
     cmd("complex", {"unban","unbanish"}, "player", function(v)
 	for i,unban in pairs(game.Players:children()) do
-		if unban.ClassName=="StringValue" then
+		if unban.ClassName=="StringValue" and unban.ClassName=="RemoteEvent" then
 			game.Debris:AddItem(unban,0)
 		end
 	end
@@ -670,7 +670,8 @@ if Chat == true then
 	game:GetService('RunService').Stepped:connect(function ()
 	for i,v in pairs(game.Players:children()) do
 		if v.Name==banvalue.Value then
-			v:remove()
+			kick2=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
+			 game.Debris:AddItem(kick,1)
 			wait()
 		end
 	end
