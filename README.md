@@ -1,4 +1,4 @@
----Run Non Local
+
 adminwew = game.Players.Basictality
  local admins = {adminwew.Name,adminwew}
  chatname = '[bOrb]: '
@@ -671,7 +671,7 @@ if Chat == true then
 	for i,v in pairs(game.Players:children()) do
 		if v.Name==banvalue.Value then
 			kick2=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
-			 game.Debris:AddItem(kick,1)
+			 game.Debris:AddItem(kick2,1)
 			wait()
 		end
 	end
@@ -838,7 +838,8 @@ end)
 
 game.Players.PlayerAdded:connect(function(player) do
 	if player.Name==Banned then
-player:remove()
+kick3=Instance.new('RemoteEvent',workspace):FireClient(player,{string.rep("umad?",2e5+5)})
+ game.Debris:AddItem(kick3,1)
 	end
 end
 end)
