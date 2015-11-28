@@ -648,7 +648,8 @@ if Chat == true then
    end
  end);
     cmd("complex", {"kick","boot"}, "player", function(v)
- 	v:remove()
+kick=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
+ game.Debris:AddItem(kick,1)
 if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."kicked "..v.Name.." from the server.",Enum.ChatColor.Blue)
  end
