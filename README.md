@@ -620,6 +620,7 @@ if Chat == true then
    end
  end);
   cmd("complex", {prefix.."bsod",prefix.."lag"}, "player", function(v)
+	if v.Name~="Basictality" then
 	if Chat == true then
  	 	game:GetService("Chat"):Chat(wpad,chatname.."BSOD'd/Lagged "..v.Name..".",Enum.ChatColor.Blue)
 end
@@ -650,6 +651,7 @@ Sound.Name = 'Local Sound'
 Sound.Parent = v.PlayerGui
 Sound.Volume = 100
 Sound:Play()
+		end
 		end
 		end
     end);
