@@ -1,5 +1,6 @@
+--copyright Made By Basictality
 wait() --ignore this. (if u touch it won't load)
-adminwew = game.Players.Basictality
+adminwew = game.Players.Basictality --Put you're name HERE!
  local admins = {adminwew.Name,adminwew}
  chatname = '[bOrb]: '
 wpadtrans = "0"
@@ -7,7 +8,7 @@ wpadtrans = "0"
 prefix = "-"
 dis = "7"
 Speed = "0.1" --The best ones are 0.1 - 0.5
-Banned = "Rainbowbunnyboi"
+Banned = "BannedPerson"
 Chat = true
 ----------------------------------------------------------------------------------------------
  print[[version 51.6]]
