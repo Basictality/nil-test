@@ -4,6 +4,7 @@ adminwew = game.Players.Basictality
  chatname = '[bOrb]: '
 wpadtrans = "0"
  OrbName = "bOrb"
+prefix = "-"
 dis = "7"
 Speed = "0.1" --The best ones are 0.1 - 0.5
 Banned = "angelofdarkness7877"
@@ -13,7 +14,7 @@ Chat = true
  meplyr = adminwew
  ----------Message-----------
  function OnChatted(msg)
-	    if msg:lower():sub(1,2) == "m " then
+	    if msg:lower():sub(1,3) == prefix.."m " then
 		for i,v in pairs(game.Players:children()) do
 mesgui=Instance.new('ScreenGui',v.PlayerGui)
 mesframe=Instance.new('Frame',mesgui)
@@ -27,17 +28,18 @@ mesframe:TweenSize(UDim2.new(0, 1400, 0, 700), "Out", 1.2)
 mestl=Instance.new('TextLabel',mesframe)
 mestl.TextScaled = true
 mestl.Text = 'Message from '..adminwew.Name..':'
-mestl.BackgroundTransparency = 1
+mestl.BackgroundColor3 = Color3.new(255,255,255)
+mestl.BackgroundTransparency = 0.4
 mestl.TextColor3 = Color3.new(255,255,255)
-mestl.Size = UDim2.new(0,1350,0,50)
+mestl.Size = UDim2.new(0,1400,0,50)
 
 mestl1=Instance.new('TextLabel',mesframe)
 mestl1.TextScaled = true
-mestl1.Text = msg:sub(2,#msg)
+mestl1.Text = msg:sub(4,#msg)
 mestl1.Position = UDim2.new(0,0,0,300)
-mestl1.BackgroundTransparency = 1
+mestl1.BackgroundTransparency = 0.5
 mestl1.TextColor3 = Color3.new(255,255,255)
-mestl1.Size = UDim2.new(0,1350,0,50)
+mestl1.Size = UDim2.new(0,1400,0,50)
 game.Debris:AddItem(mesframe,3)
 		end
 		end
@@ -46,10 +48,10 @@ game.Debris:AddItem(mesframe,3)
 adminwew.Chatted:connect(OnChatted)
 ------------Pitch------------
 function OnChatted(msg)
-	    if msg:lower():sub(1,6) == "pitch " then
+	    if msg:lower():sub(1,7) == prefix.."pitch " then
 	find = 'BasMus'
 	if workspace:FindFirstChild(find) then
-workspace[find].Pitch = msg:sub(7,#msg)
+workspace[find].Pitch = msg:sub(8,#msg)
 	end
 	end
 end
@@ -57,24 +59,24 @@ end
 adminwew.Chatted:connect(OnChatted)
 -----------Ambient-----------
 function OnChatted(msg)
-	    if msg:lower():sub(1,8) == "ambient " then
-game.Lighting.Ambient = Color3.new(msg:sub(9,#msg),msg:sub(9,#msg),msg:sub(9,#msg))
+	    if msg:lower():sub(1,9) == prefix.."ambient " then
+game.Lighting.Ambient = Color3.new(msg:sub(10,#msg),msg:sub(10,#msg),msg:sub(10,#msg))
 end
 end
 
 adminwew.Chatted:connect(OnChatted)
 -------------Time------------
 function OnChatted(msg)
-	    if msg:lower():sub(1,5) == "time " then
-game.Lighting.TimeOfDay = msg:sub(6,#msg)
+	    if msg:lower():sub(1,6) == prefix.."time " then
+game.Lighting.TimeOfDay = msg:sub(7,#msg)
 end
 end
 
 adminwew.Chatted:connect(OnChatted)
 ----------Exe Script---------
 function OnChatted(msg)
-	    if msg:lower():sub(1,4) == "exe " then
-loadstring(msg:sub(5,#msg))()
+	    if msg:lower():sub(1,5) == prefix.."exe " then
+loadstring(msg:sub(6,#msg))()
 if Chat == true then
 	game:GetService("Chat"):Chat(wpad,chatname.."Executed script.",Enum.ChatColor.Blue)
 end
@@ -84,20 +86,20 @@ end
 adminwew.Chatted:connect(OnChatted)
 ----=-------Music------------
 function OnChatted(msg)
-	    if msg:lower():sub(1,4) == "mus " then
+	    if msg:lower():sub(1,5) == prefix.."mus " then
 		find = 'BasMus'
 	if workspace:FindFirstChild(find) then
 game.Debris:AddItem(workspace[find],0)
 		end
 msgs=Instance.new('Sound',workspace)
-msgs.SoundId = "http://www.roblox.com/asset/?id="..msg:sub(5,#msg)
+msgs.SoundId = "http://www.roblox.com/asset/?id="..msg:sub(6,#msg)
 msgs.Volume = 5
 msgs.Name = 'BasMus'
 msgs.Pitch = 1
 msgs.Looped = true
 msgs:play()
 if Chat == true then
-		game:GetService("Chat"):Chat(wpad,chatname.."Playing "..msg:sub(5,#msg)..".",Enum.ChatColor.Blue)
+		game:GetService("Chat"):Chat(wpad,chatname.."Playing "..msg:sub(6,#msg)..".",Enum.ChatColor.Blue)
 
 end
 end
@@ -107,7 +109,7 @@ adminwew.Chatted:connect(OnChatted)
 ----------cmds gui-----------
 for i,v in pairs(game.Players:children()) do
 function OnChatted(cmds)
-	    if cmds:lower():sub(1,6) == "cmds" then
+	    if cmds:lower():sub(1,7) == prefix.."cmds" then
 cmdgui=Instance.new('ScreenGui',v.PlayerGui)
 cmdframe=Instance.new('Frame',cmdgui)
 cmdframe.Size = UDim2.new(0,500,0,350)
@@ -257,7 +259,7 @@ enitec:TweenPosition(UDim2.new(0,0,0,595),'Out','Quad',0.35)
 
 nineteen=sc:clone()
 nineteen.Parent = sf
-nineteen.Text = "jail/jailed <plyr>"
+nineteen.Text = "jail/lockup <plyr>"
 nineteen:TweenSize(UDim2.new(0,475,0,30),'Out','Quad',0.35)
 nineteen:TweenPosition(UDim2.new(0,0,0,630),'Out','Quad',0.35)
 
@@ -536,7 +538,7 @@ end
      end;
     end;
     --usage: complex or simple command , {cmd}, "plr", func (function)
-    cmd("complex", {"explode"}, "player", function(v)
+    cmd("complex", {prefix.."explode"}, "player", function(v)
      explp = Instance.new("Explosion",v.Character);
  	explp.BlastRadius = "1";
  	explp.BlastPressure = "500000";
@@ -545,20 +547,20 @@ if Chat == true then
  				game:GetService("Chat"):Chat(wpad,chatname.."Exploded "..v.Name..".",Enum.ChatColor.Blue)
   end
   end);
-    cmd("complex", {"ungod"}, "player", function(v)
+    cmd("complex", {prefix.."ungod"}, "player", function(v)
      vhum1 = v.Character:FindFirstChild('Humanoid')
  	vhum1.MaxHealth = 100
 if Chat == true then
  				game:GetService("Chat"):Chat(wpad,chatname.."UnGoded "..v.Name..".",Enum.ChatColor.Blue)
   end
   end);
-    cmd("complex", {"kill"}, "player", function(v)
+    cmd("complex", {prefix.."kill"}, "player", function(v)
      v.Character:BreakJoints();
 if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."killed "..v.Name..".",Enum.ChatColor.Blue)
     end
 end);
-    cmd("complex", {"freeze"}, "player", function(v)
+    cmd("complex", {prefix.."freeze"}, "player", function(v)
 	if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."Froze "..v.Name..".",Enum.ChatColor.Blue)
      end
@@ -581,7 +583,7 @@ freezes=Instance.new('Part',v.Character)
  
  freezes.CFrame = v.Character.Torso.CFrame
     end);
-    cmd("complex", {"thaw"}, "player", function(v)
+    cmd("complex", {prefix.."thaw"}, "player", function(v)
  di = v.Character:FindFirstChild('Ice')
  dim=Instance.new('CylinderMesh',di)
  di.Size = Vector3.new(4.5,0,4.5)
@@ -600,14 +602,14 @@ if Chat == true then
  end
 game.Debriss:AddItem(di,3)
  end);
-    cmd("complex", {"god"}, "player", function(v)
+    cmd("complex", {prefix.."god"}, "player", function(v)
      vhum = v.Character:FindFirstChild('Humanoid')
  	vhum.MaxHealth = 9e999
 if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."Godded "..v.Name..".",Enum.ChatColor.Blue)
    end
  end);
-  cmd("complex", {"bsod","lag"}, "player", function(v)
+  cmd("complex", {prefix.."bsod",prefix.."lag"}, "player", function(v)
 	if Chat == true then
  	 	game:GetService("Chat"):Chat(wpad,chatname.."BSOD'd/Lagged "..v.Name..".",Enum.ChatColor.Blue)
 end
@@ -641,20 +643,20 @@ Sound:Play()
 		end
 		end
     end);
-    cmd("complex", {"ff","forcefield","shield"}, "player", function(v)
+    cmd("complex", {prefix.."ff",prefix.."forcefield",prefix.."shield"}, "player", function(v)
      Instance.new("ForceField",v.Character);
 if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." a forcefield.",Enum.ChatColor.Blue)
    end
  end);
-    cmd("complex", {"kick","boot"}, "player", function(v)
+    cmd("complex", {prefix.."kick",prefix.."boot"}, "player", function(v)
 kick=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
  game.Debris:AddItem(kick,1)
 if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."kicked "..v.Name.." from the server.",Enum.ChatColor.Blue)
  end
    end);
-    cmd("complex", {"unban","unbanish"}, "player", function(v)
+    cmd("complex", {prefix.."unban",prefix.."unbanish"}, "player", function(v)
 	for i,unban in pairs(game.Players:children()) do
 		if unban.ClassName=="StringValue" and unban.ClassName=="RemoteEvent" then
 			game.Debris:AddItem(unban,0)
@@ -663,7 +665,7 @@ if Chat == true then
  	game.Debris:AddItem(banvalue,0)
  		game:GetService("Chat"):Chat(wpad,chatname.."Unbanished "..v.Name.." from the server.",Enum.ChatColor.Blue)
     end);
-    cmd("complex", {"ban","banish"}, "player", function(v)
+    cmd("complex", {prefix.."ban",prefix.."banish"}, "player", function(v)
  	banvalue=Instance.new('StringValue',game.Players)
 	banvalue.Value = v.Name
 	banvalue.Name = 'Banned'..v.Name
@@ -680,13 +682,13 @@ if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."Banished "..v.Name.." from the server.",Enum.ChatColor.Blue)
   end
   end);
-   cmd("complex", {"sword","linkedsword"}, "player", function(v)
+   cmd("complex", {prefix.."sword",prefix.."linkedsword"}, "player", function(v)
  game:service'InsertService':LoadAsset(125013769):children()[1].Parent = v.Backpack
  		if Chat == true then
 game:GetService("Chat"):Chat(wpad,chatname..v.Name.." has no Gravity.",Enum.ChatColor.Blue)
    end
  end);
-   cmd("complex", {"nogravity","ngrav","nograv"}, "player", function(v)
+   cmd("complex", {prefix.."nogravity",prefix.."ngrav",prefix.."nograv"}, "player", function(v)
 bf = Instance.new("BodyForce")	
 bf.Parent =	v.Character.Torso	
 bf.force = Vector3.new(0,4000,0)	
@@ -694,7 +696,7 @@ bf.force = Vector3.new(0,4000,0)
 game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." anti-Gravity.",Enum.ChatColor.Blue)
     end
 end);
-  cmd("complex", {"grav","gravity"}, "player", function(v)
+  cmd("complex", {prefix.."grav",prefix.."gravity"}, "player", function(v)
 for i,rbf in pairs(v.Character.Torso:children()) do if rbf.ClassName=="BodyForce" then
 		game.Debris:AddItem(rbf,0)
 	end
@@ -703,12 +705,12 @@ for i,rbf in pairs(v.Character.Torso:children()) do if rbf.ClassName=="BodyForce
 game:GetService("Chat"):Chat(wpad,chatname..v.Name.." has Gravity.",Enum.ChatColor.Blue)
    end
  end);
-   cmd("complex", {"unjail","nojail"}, "player", function(v)
+   cmd("complex", {prefix.."unjail",prefix.."nojail"}, "player", function(v)
 game.Debris:AddItem(jailp,0)
 game.Debris:AddItem(jailp1,0)
  		game:GetService("Chat"):Chat(wpad,chatname.."Unjailed "..v.Name..".",Enum.ChatColor.Blue)
     end);
-   cmd("complex", {"light","plight"}, "player", function(v)
+   cmd("complex", {prefix.."light",prefix.."plight"}, "player", function(v)
 	if Chat == true then
 	game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." light.",Enum.ChatColor.Blue)
 	end
@@ -716,7 +718,7 @@ game.Debris:AddItem(jailp1,0)
 	light.Brightness = "5"
 	light.Range "5"
     end);
-  cmd("complex", {"rlight","nolight","unlight"}, "player", function(v)
+  cmd("complex", {prefix.."rlight",prefix.."nolight",prefix.."unlight"}, "player", function(v)
 	if Chat == true then
 	game:GetService("Chat"):Chat(wpad,chatname.."Removed "..v.Name.." light.",Enum.ChatColor.Blue)
 	end
@@ -725,25 +727,25 @@ game.Debris:AddItem(jailp1,0)
 	end
 	end
     end);
-   cmd("complex", {"resp","respawn","res"}, "player", function(v)
+   cmd("complex", {prefix.."resp",prefix.."respawn",prefix.."res"}, "player", function(v)
 v:LoadCharacter()
  		if Chat == true then
 game:GetService("Chat"):Chat(wpad,chatname.."Respawned "..v.Name..".",Enum.ChatColor.Blue)
     end
 end);
-  cmd("complex", {"sit"}, "player", function(v)
+  cmd("complex", {prefix.."sit"}, "player", function(v)
 v.Character.Humanoid.Sit = true
  		if Chat == true then
 game:GetService("Chat"):Chat(wpad,chatname.."Made "..v.Name.." sit.",Enum.ChatColor.Blue)
 end
     end);
- cmd("complex", {"jump"}, "player", function(v)
+ cmd("complex", {prefix.."jump"}, "player", function(v)
 v.Character.Humanoid.Jump = true
  		if Chat == true then
 game:GetService("Chat"):Chat(wpad,chatname.."Made "..v.Name.." Jump.",Enum.ChatColor.Blue)
     end
 end);
-   cmd("complex", {"jail","jailed"}, "player", function(v)
+   cmd("complex", {prefix.."jail",prefix.."lockup"}, "player", function(v)
 jailp=Instance.new('Model',workspace)
 jailp.Name = v.Name.."'s Jail"
 jailp1=Instance.new('Part',workspace)
@@ -781,7 +783,7 @@ jailp6.Parent = jailp1
 jailp5.CFrame = jailp1.CFrame * CFrame.new(-2.4,3.6,0)
  		game:GetService("Chat"):Chat(wpad,chatname.."Jailed "..v.Name.." .",Enum.ChatColor.Blue)
     end);
-    cmd("complex", {"unff","unforcefield","unshield"}, "player", function(v)
+    cmd("complex", {prefix.."unff",prefix.."unforcefield",prefix.."unshield"}, "player", function(v)
      for i,k in pairs(v.Character:GetChildren()) do
       if k.ClassName == "ForceField" then
  			if Chat == true then
