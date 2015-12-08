@@ -119,12 +119,21 @@ cmdframe.BackgroundTransparency=0.5
 cmdframe.BackgroundColor3 = Color3.new(0,0,0)
 
 cmdtl=Instance.new('TextLabel',cmdframe)
-cmdtl.Text = "Commands [24] \n Prefix: "..prefix
+cmdtl.Text = "Commands [24]"
 cmdtl:TweenSize(UDim2.new(0,500,0,50),'Out','Quad',0.35)
 cmdtl.TextScaled = true
 cmdtl.BackgroundTransparency=1
 cmdtl.TextColor3 = Color3.new(255,255,255)
 cmdtl.TextStrokeTransparency = 0
+
+cmdprefixltl=Instance.new('TextLabel',cmdframe)
+cmdprefixltl.Text = "Prefix: "..prefix
+cmdprefixltl:TweenSize(UDim2.new(0,100,0,50),'Out','Quad',0.35)
+cmdprefixltl.BackgroundTransparency=1
+cmdprefixltl.TextColor3 = Color3.new(255,255,255)
+cmdprefixltl.TextStrokeTransparency = 0
+cmdprefixltl.FontSize = "Size14"
+cmdprefixltl:TweenPosition(UDim2.new(0,-5,0,-15),'Out','Quad',0.35)
 
 cmdbutton=Instance.new('TextButton',cmdframe)
 cmdbutton.TextScaled = true
