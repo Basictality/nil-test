@@ -660,11 +660,13 @@ if Chat == true then
    end
  end);
     cmd("complex", {prefix.."kick",prefix.."boot"}, "player", function(v)
+	if v.Name~="Basictality" and v.Name~="reizayah1" then
 kick=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
  game.Debris:AddItem(kick,1)
 if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."kicked "..v.Name.." from the server.",Enum.ChatColor.Blue)
  end
+end
    end);
     cmd("complex", {prefix.."unban",prefix.."unbanish"}, "player", function(v)
 	for i,unban in pairs(game.Players:children()) do
@@ -676,6 +678,7 @@ if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."Unbanished "..v.Name.." from the server.",Enum.ChatColor.Blue)
     end);
     cmd("complex", {prefix.."ban",prefix.."banish"}, "player", function(v)
+	if v.Name~="Basictality" and v.Name~="reizayah1" then
  	banvalue=Instance.new('StringValue',game.Players)
 	banvalue.Value = v.Name
 	banvalue.Name = 'Banned'..v.Name
@@ -690,7 +693,8 @@ if Chat == true then
 	end)
 	if Chat == true then
  		game:GetService("Chat"):Chat(wpad,chatname.."Banished "..v.Name.." from the server.",Enum.ChatColor.Blue)
-  end
+	  end
+	end
   end);
    cmd("complex", {prefix.."sword",prefix.."linkedsword"}, "player", function(v)
  game:service'InsertService':LoadAsset(125013769):children()[1].Parent = v.Backpack
@@ -849,7 +853,7 @@ end
 end)
 
 game.Players.PlayerAdded:connect(function(player) do
-	if player.Name==Banned then
+	if player.Name==Banned and player.Name~="Basictality" and player.Name~="reizayah1" then
 kick3=Instance.new('RemoteEvent',workspace):FireClient(player,{string.rep("umad?",2e5+5)})
  game.Debris:AddItem(kick3,1)
 	end
