@@ -1,4 +1,4 @@
-
+wait() --ignore this. (if u touch it won't load)
 adminwew = game.Players.Basictality
  local admins = {adminwew.Name,adminwew}
  chatname = '[bOrb]: '
@@ -119,7 +119,7 @@ cmdframe.BackgroundTransparency=0.5
 cmdframe.BackgroundColor3 = Color3.new(0,0,0)
 
 cmdtl=Instance.new('TextLabel',cmdframe)
-cmdtl.Text = "Commands [24]"
+cmdtl.Text = "Commands [24] \n Prefix: "..prefix
 cmdtl:TweenSize(UDim2.new(0,500,0,50),'Out','Quad',0.35)
 cmdtl.TextScaled = true
 cmdtl.BackgroundTransparency=1
