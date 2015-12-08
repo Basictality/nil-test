@@ -7,7 +7,7 @@ wpadtrans = "0"
 prefix = "-"
 dis = "7"
 Speed = "0.1" --The best ones are 0.1 - 0.5
-Banned = "angelofdarkness7877"
+Banned = "Rainbowbunnyboi"
 Chat = true
 ----------------------------------------------------------------------------------------------
  print[[version 51.6]]
