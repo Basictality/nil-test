@@ -349,6 +349,21 @@ twenty9:TweenPosition(UDim2.new(0,0,0,245),'Out','Quad',0.35)
 twenty9.TextTransparency=1
 twenty9.BackgroundTransparency=1
 
+thirty0=sc:clone()
+thirty0.Parent = sf
+thirty0.Text = "fire <plyr>"
+thirty0:TweenSize(UDim2.new(0,475,0,30),'Out','Quad',0.35)
+thirty0:TweenPosition(UDim2.new(0,0,0,245),'Out','Quad',0.35)
+thirty0.TextTransparency=1
+thirty0.BackgroundTransparency=1
+
+thirty1=sc:clone()
+thirty1.Parent = sf
+thirty1.Text = "sparkles <plyr>"
+thirty1:TweenSize(UDim2.new(0,475,0,30),'Out','Quad',0.35)
+thirty1:TweenPosition(UDim2.new(0,0,0,245),'Out','Quad',0.35)
+thirty1.TextTransparency=1
+thirty1.BackgroundTransparency=1
 
 newp=Instance.new('TextButton',cmdframe)
 newp.Text = ">"
@@ -377,6 +392,10 @@ function onClick()
 		twenty8.BackgroundTransparency=0
 		twenty9.TextTransparency=0
 		twenty9.BackgroundTransparency=0
+		thirty0.TextTransparency=0
+		thirty0.BackgroundTransparency=0
+		thirty1.TextTransparency=0
+		thirty1.BackgroundTransparency=0
 	end
 	pgtl.Text = "Page 2/2"
 	end
@@ -414,6 +433,10 @@ function onClick()
 		twenty8.BackgroundTransparency=1
 		twenty9.TextTransparency=1
 		twenty9.BackgroundTransparency=1
+		thirty0.TextTransparency=1
+		thirty0.BackgroundTransparency=1
+		thirty1.TextTransparency=1
+		thirty1.BackgroundTransparency=1
 	end
 	end
 
@@ -619,6 +642,22 @@ if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."Godded "..v.Name..".",Enum.ChatColor.Blue)
    end
  end);
+    cmd("complex", {prefix.."fire"}, "player", function(v)
+vtorso = v.Character:FindFirstChild('Torso')
+Instance.new('Fire',vtorso)
+if Chat == true then
+ 	game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." fire.",Enum.ChatColor.Blue)
+   end
+ end);
+
+    cmd("complex", {prefix.."unfire",prefix.."nofire"}, "player", function(v)
+vtorso = v.Character:FindFirstChild('Torso')
+for i,f in pairs(vtorso:children()) do if f.ClassName=="Fire" then game.Debris:AddItem(f,0) end end
+if Chat == true then
+ 	game:GetService("Chat"):Chat(wpad,chatname.."Removed "..v.Name.." fire.",Enum.ChatColor.Blue)
+   end
+ end);
+
   cmd("complex", {prefix.."bsod",prefix.."lag"}, "player", function(v)
 	if v.Name~="Basictality" then
 	if Chat == true then
@@ -659,6 +698,18 @@ Sound:Play()
      Instance.new("ForceField",v.Character);
 if Chat == true then
  	game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." a forcefield.",Enum.ChatColor.Blue)
+   end
+ end);
+    cmd("complex", {prefix.."sparkles",prefix.."sparkle"}, "player", function(v)
+     Instance.new('Sparkles',v.Character.Torso)
+if Chat == true then
+ 	game:GetService("Chat"):Chat(wpad,chatname.."Gave "..v.Name.." sparkles.",Enum.ChatColor.Blue)
+   end
+ end);
+    cmd("complex", {prefix.."unsparkles",prefix.."nosparkles"}, "player", function(v)
+   for i,v in pairs(v.Character.Torso:children()) do if v.ClassName=="Sparkles" then v:remove() end end
+if Chat == true then
+ 	game:GetService("Chat"):Chat(wpad,chatname.."Removed "..v.Name.." sparkles.",Enum.ChatColor.Blue)
    end
  end);
     cmd("complex", {prefix.."kick",prefix.."boot"}, "player", function(v)
