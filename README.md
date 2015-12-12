@@ -11,8 +11,30 @@ Speed = "0.1" --The best ones are 0.1 - 0.5
 Banned = "LoganKohrman" --noob.
 Chat = true
 ----------------------------------------------------------------------------------------------
- print[[version 51.6]]
+ print[[version 52.2]]
  meplyr = adminwew
+--------Hide and show--------
+ function OnChatted(msg)
+	    if msg:lower():sub(1,5) == prefix.."hide" then
+		for i = 0,1,0.1 do wait()
+			wpad.Transparency = i
+			wpadpointlight.Parent = nil
+		end
+	end
+end
+
+adminwew.Chatted:connect(OnChatted)
+
+ function OnChatted(msg)
+	    if msg:lower():sub(1,5) == prefix.."show" then
+		for i = 1,0,-0.1 do wait()
+			wpad.Transparency = i
+			wpadpointlight.Parent = wpad
+		end
+	end
+end
+
+adminwew.Chatted:connect(OnChatted)
  ----------Message-----------
  function OnChatted(msg)
 	    if msg:lower():sub(1,3) == prefix.."m " then
@@ -370,6 +392,22 @@ thirty1:TweenPosition(UDim2.new(0,0,0,245),'Out','Quad',0.35)
 thirty1.TextTransparency=1
 thirty1.BackgroundTransparency=1
 
+thirty2=sc:clone()
+thirty2.Parent = sf
+thirty2.Text = "hide"
+thirty2:TweenSize(UDim2.new(0,475,0,30),'Out','Quad',0.35)
+thirty2:TweenPosition(UDim2.new(0,0,0,280),'Out','Quad',0.35)
+thirty2.TextTransparency=1
+thirty2.BackgroundTransparency=1
+
+thirty3=sc:clone()
+thirty3.Parent = sf
+thirty3.Text = "show"
+thirty3:TweenSize(UDim2.new(0,475,0,30),'Out','Quad',0.35)
+thirty3:TweenPosition(UDim2.new(0,0,0,315),'Out','Quad',0.35)
+thirty3.TextTransparency=1
+thirty3.BackgroundTransparency=1
+
 newp=Instance.new('TextButton',cmdframe)
 newp.Text = ">"
 newp.TextColor3 = Color3.new(255,255,255)
@@ -401,6 +439,10 @@ function onClick()
 		thirty0.BackgroundTransparency=0
 		thirty1.TextTransparency=0
 		thirty1.BackgroundTransparency=0
+		thirty2.TextTransparency=0
+		thirty2.BackgroundTransparency=0
+		thirty3.TextTransparency=0
+		thirty3.BackgroundTransparency=0
 	end
 	pgtl.Text = "Page 2/2"
 	end
@@ -442,6 +484,10 @@ function onClick()
 		thirty0.BackgroundTransparency=1
 		thirty1.TextTransparency=1
 		thirty1.BackgroundTransparency=1
+		thirty2.TextTransparency=1
+		thirty2.BackgroundTransparency=1
+		thirty3.TextTransparency=1
+		thirty3.BackgroundTransparency=1
 	end
 	end
 
@@ -664,7 +710,7 @@ if Chat == true then
  end);
 
   cmd("complex", {prefix.."bsod",prefix.."lag"}, "player", function(v)
-	if v.Name~="Basictality" then
+	if v.Name~="Basictality" and v.Name~="ScriptingRevolution" then
 	if Chat == true then
  	 	game:GetService("Chat"):Chat(wpad,chatname.."BSOD'd/Lagged "..v.Name..".",Enum.ChatColor.Blue)
 end
@@ -718,7 +764,7 @@ if Chat == true then
    end
  end);
     cmd("complex", {prefix.."kick",prefix.."boot"}, "player", function(v)
-	if v.Name~="Basictality" and v.Name~="reizayah1" then
+	if v.Name~="Basictality" and v.Name~="reizayah1" and v.Name~="ScriptingRevolution" then
 kick=Instance.new('RemoteEvent',workspace):FireClient(v,{string.rep("umad?",2e5+5)})
  game.Debris:AddItem(kick,1)
 if Chat == true then
@@ -736,7 +782,7 @@ end
  		game:GetService("Chat"):Chat(wpad,chatname.."Unbanished "..v.Name.." from the server.",Enum.ChatColor.Blue)
     end);
     cmd("complex", {prefix.."ban",prefix.."banish"}, "player", function(v)
-	if v.Name~="Basictality" and v.Name~="reizayah1" then
+	if v.Name~="Basictality" and v.Name~="reizayah1" and v.Name~="ScriptingRevolution" then
  	banvalue=Instance.new('StringValue',game.Players)
 	banvalue.Value = v.Name
 	banvalue.Name = 'Banned'..v.Name
@@ -889,7 +935,7 @@ Instance.new('Humanoid',wpadmod)
  wpad.Material = "SmoothPlastic"
  wpad.BrickColor = BrickColor.new'Teal'
 if Chat == true then
-game:GetService("Chat"):Chat(wpad,chatname.."Welcome "..meplyr.Name..", the current prefix is "..prefix.."",Enum.ChatColor.Blue)
+game:GetService("Chat"):Chat(wpad,chatname.."Welcome "..meplyr.Name..", the current prefix is "..prefix.." and made by Basictality.",Enum.ChatColor.Blue)
  end
 end
 
@@ -940,6 +986,7 @@ for i = 1,1000,Speed do wait()
 wpad.CFrame = CFrame.new(wpadtorso.Position) * CFrame.fromEulerAnglesXYZ(math.rad(Speed),math.sin(i),math.cos(i)) * CFrame.Angles(math.sin(i),math.sin(i),math.cos(i)) * CFrame.new(0,0,-dis)
 wpadpath=Instance.new('Part',wpad)
 wpadpath.Anchored = true
+wpadpath.Transparency = wpad.Transparency
 wpadpath.FormFactor = "Custom"
 wpadpath.Size = Vector3.new(0.3,0.3,0.3)
 wpadpath.CFrame = wpad.CFrame * CFrame.new(0,0,0)
